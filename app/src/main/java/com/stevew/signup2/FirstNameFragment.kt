@@ -28,7 +28,8 @@ class FirstNameFragment : Fragment() {
         binding = FragmentFirstNameBinding.inflate(inflater, container, false)
         return binding?.root
     }
-// what happens when view is created ->
+
+    // what happens when view is created ->
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // getting reference to view model
@@ -50,7 +51,8 @@ class FirstNameFragment : Fragment() {
             }
         }
     }
-// destroy any unwanted bindings that may hog up memory
+
+    // destroy any unwanted bindings that may hog up memory
     override fun onDestroy() {
         super.onDestroy()
         binding = null
