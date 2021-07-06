@@ -30,6 +30,8 @@ class PasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // initialize ViewModel with a ViewModelProvider .. tell it where to get the ViewModel
         viewModel = ViewModelProvider(requireActivity()).get(SignUpViewModel::class.java)
 
         binding?.let { binding ->
@@ -50,7 +52,7 @@ class PasswordFragment : Fragment() {
                         binding.etPassword.text?.clear()
                         binding.etPasswordCheck.text?.clear()
                     }
-                } else {
+                } else { // if no input from user was detected
                     Toast.makeText(context, "Please enter a password", Toast.LENGTH_SHORT).show()
                 }
             }
