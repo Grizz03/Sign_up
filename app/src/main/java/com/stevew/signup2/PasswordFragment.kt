@@ -31,28 +31,28 @@ class PasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // initialize ViewModel with a ViewModelProvider .. tell it where to get the ViewModel
+        // INITIALIZE the ViewModel with a ViewModelProvider .. tell it where to get the ViewModel
         viewModel = ViewModelProvider(requireActivity()).get(SignUpViewModel::class.java)
 
         binding?.let { binding ->
-            // storing text to view model
+            // Storing text to view model
             binding.etPassword.doAfterTextChanged {
                     viewModel.password = it.toString()
                 }
 
             // click listener
             binding.btnSubmit.setOnClickListener{
-                val userPassword = binding.etPassword.text.toString() // create variables for edit text
+                val userPassword = binding.etPassword.text.toString() // Create variables for edit text
                 val userPasswordCheck = binding.etPasswordCheck.text.toString()
-                if (userPassword.isNotEmpty() && userPasswordCheck.isNotEmpty()) { // checks if .. the edit text fields empty?
-                    if (userPassword == userPasswordCheck) { // if they are not empty then .. do the passwords match?
+                if (userPassword.isNotEmpty() && userPasswordCheck.isNotEmpty()) { // Checks if .. the edit text fields empty?
+                    if (userPassword == userPasswordCheck) { // If they are not empty then .. do the passwords match?
                         findNavController().navigate(R.id.action_passwordFragment_to_userInfoFragment)
-                    } else { // clears input fields if the passwords don't match and lets user know
+                    } else { // Clears input fields if the passwords don't match and lets user know
                         Toast.makeText(context, "Passwords must be matching", Toast.LENGTH_SHORT).show()
                         binding.etPassword.text?.clear()
                         binding.etPasswordCheck.text?.clear()
                     }
-                } else { // if no input from user was detected
+                } else { // If no input from user was detected
                     Toast.makeText(context, "Please enter a password", Toast.LENGTH_SHORT).show()
                 }
             }
