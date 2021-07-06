@@ -1,8 +1,6 @@
 package com.stevew.signup2
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -42,12 +40,12 @@ class PasswordFragment : Fragment() {
 
             // click listener
             binding.btnSubmit.setOnClickListener{
-                val userPassword = binding.etPassword.text.toString()
+                val userPassword = binding.etPassword.text.toString() // create variables for edit text
                 val userPasswordCheck = binding.etPasswordCheck.text.toString()
-                if (userPassword.isNotEmpty() && userPasswordCheck.isNotEmpty()) {
-                    if (userPassword == userPasswordCheck) {
+                if (userPassword.isNotEmpty() && userPasswordCheck.isNotEmpty()) { // checks if .. the edit text fields empty?
+                    if (userPassword == userPasswordCheck) { // if they are not empty then .. do the passwords match?
                         findNavController().navigate(R.id.action_passwordFragment_to_userInfoFragment)
-                    } else {
+                    } else { // clears input fields if the passwords don't match and lets user know
                         Toast.makeText(context, "Passwords must be matching", Toast.LENGTH_SHORT).show()
                         binding.etPassword.text?.clear()
                         binding.etPasswordCheck.text?.clear()
